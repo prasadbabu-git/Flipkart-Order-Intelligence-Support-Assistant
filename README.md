@@ -176,3 +176,14 @@ Quick setup:
 
 Then select `.venv\Scripts\python.exe` as the VS Code interpreter.
 
+## Production Validation
+
+This project includes:
+
+- Return-risk machine learning pipeline
+- Fashion-MNIST product image classification
+- RAG-based policy retrieval
+- LangGraph support orchestration
+- FastAPI backend
+- Streamlit dashboard
+- Automated tests and repository validation
