@@ -5,7 +5,7 @@
     "user_text": "Why is it risky?",
     "intent": "RETURN_RISK",
     "risk": {
-      "return_probability": 0.44885600854963015,
+      "return_probability": 0.44885600854963026,
       "risk_bucket": "Low",
       "threshold_file": "thresholds.json",
       "explanation": [
