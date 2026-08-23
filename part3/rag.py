@@ -13,7 +13,7 @@ class LocalRetriever:
     def __init__(self, kb_dir=KB_DIR):
         self.kb_dir=Path(kb_dir); self.docs=[]; self.chunks=[]; self.backend=None
         for path in sorted(self.kb_dir.glob('KB*.txt')):
-            text=path.read_text(encoding='utf-8').strip()
+            text=path.read_text(encoding='utf-8-sig').strip()
             doc_id=path.stem.split('_')[0]
             self.docs.append({'doc_id':doc_id,'title':path.stem,'text':text})
             for i,s in enumerate([x.strip() for x in re.split(r'(?<=[.!?])\s+', text) if x.strip()],1):
@@ -53,15 +53,56 @@ class LocalRetriever:
             c=self.chunks[int(idx)].copy(); c['score']=float(score); out.append(c)
         return out
 
-    def grounded(self, query, threshold=0.15):
-        hits=self.retrieve(query,k=3)
-        score=hits[0]['score'] if hits else 0.0
-        # Require at least one meaningful lexical anchor between the query and
-        # the highest-scoring retrieved text. This blocks high-similarity junk
-        # matches such as an unrelated policy question about an unseen object.
-        stop={'what','is','the','a','an','for','of','to','can','i','how','long','when','does','do','this','that','and','or','on','in','my','please'}
-        q_tokens={x for x in re.findall(r'[a-z0-9]+',query.lower()) if len(x)>3 and x not in stop}
-        top_text=(hits[0]['text'].lower() if hits else '')
-        anchors={x for x in q_tokens if x in top_text}
-        grounded=bool(hits) and score>=threshold and bool(anchors)
-        return {'grounded':grounded,'score':float(score),'threshold':threshold,'hits':hits,'lexical_anchors':sorted(anchors)}
+    def grounded(self, query, threshold=0.60):
+        """
+        Decide whether the retrieved policy evidence is sufficiently grounded.
+
+        Two checks are required:
+        1. Semantic similarity must exceed the calibrated threshold.
+        2. The query must share at least one meaningful domain/entity term
+           with the top retrieved document.
+
+        Generic words such as "policy", "return", "item", and "product"
+        are not considered meaningful anchors.
+        """
+        hits = self.retrieve(query, k=3)
+        score = hits[0]["score"] if hits else 0.0
+
+        # Generic terms that should never be treated as evidence of grounding.
+        generic = {
+            "what", "is", "the", "a", "an", "for", "of", "to", "can",
+            "i", "how", "long", "when", "does", "do", "this", "that",
+            "and", "or", "on", "in", "my", "please", "policy",
+            "return", "returns", "returned", "item", "items",
+            "product", "products", "eligible", "eligibility",
+            "period", "window", "days", "day", "time", "take",
+            "take", "customer", "support"
+        }
+
+        q_tokens = {
+            x
+            for x in re.findall(r"[a-z0-9]+", query.lower())
+            if len(x) > 3 and x not in generic
+        }
+
+        top_text = hits[0]["text"].lower() if hits else ""
+
+        anchors = sorted(
+            x for x in q_tokens
+            if re.search(rf"\b{re.escape(x)}\b", top_text)
+        )
+
+        # Both semantic similarity and a meaningful domain anchor are required.
+        grounded = (
+            bool(hits)
+            and score >= threshold
+            and len(anchors) > 0
+        )
+
+        return {
+            "grounded": grounded,
+            "score": float(score),
+            "threshold": float(threshold),
+            "hits": hits,
+            "lexical_anchors": anchors,
+        }

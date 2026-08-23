@@ -1,4 +1,10 @@
 {
-  "status": "PENDING",
-  "reason": "Part 2 model artifact is not generated in this no-network preparation environment. Run part2/train_classifier.py in an environment with Fashion-MNIST and pretrained ResNet weights available."
+  "status": "PASS",
+  "query": "Classify the uploaded product image",
+  "image": "data\\sample_images\\01_0_T-shirt_top.png",
+  "result": {
+    "label": "T-shirt/top",
+    "confidence": 0.9842234253883362,
+    "class_index": 0
+  }
 }

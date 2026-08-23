@@ -4,9 +4,9 @@
   "result": {
     "user_text": "What is the return policy for spaceships?",
     "intent": "POLICY",
-    "grounded": true,
+    "grounded": false,
     "score": 0.4406293034553528,
-    "threshold": 0.15,
+    "threshold": 0.6,
     "hits": [
       {
         "chunk_id": "KB014_01",
@@ -28,7 +28,7 @@
       }
     ],
     "answer": {
-      "answer": "Items identified by the category policy as non-returnable are not eligible for a standard return.",
+      "answer": "I could not find a sufficiently grounded policy answer. Retrieval score: 0.441; semantic threshold: 0.600; required domain anchor: False.",
       "source": "policy_kb",
       "confidence": 0.4406
     },

@@ -34,7 +34,7 @@ class SupportGraph:
     def intent_node(self,s):
         s['intent']=detect_intent(s['user_text']); return s
     def policy_node(self,s):
-        g=retriever.grounded(s['user_text'],threshold=0.15)
+        g=retriever.grounded(s['user_text'],threshold=0.60)
         s.update(g); return s
     def risk_node(self,s):
         # Demo state may contain an order feature dict encoded by caller.

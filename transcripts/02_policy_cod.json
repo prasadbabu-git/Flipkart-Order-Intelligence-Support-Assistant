@@ -6,7 +6,7 @@
     "intent": "POLICY",
     "grounded": false,
     "score": 0.8499888181686401,
-    "threshold": 0.15,
+    "threshold": 0.6,
     "hits": [
       {
         "chunk_id": "KB005_01",
@@ -28,7 +28,7 @@
       }
     ],
     "answer": {
-      "answer": "I could not find a sufficiently grounded policy answer. Retrieval score 0.850 is below the threshold 0.150.",
+      "answer": "I could not find a sufficiently grounded policy answer. Retrieval score: 0.850; semantic threshold: 0.600; required domain anchor: False.",
       "source": "policy_kb",
       "confidence": 0.85
     },

@@ -1,1 +1,4 @@
-The standard delivery SLA is 3 to 7 calendar days from dispatch. The displayed delivery estimate on the order is the primary customer-facing SLA reference.
+﻿The standard delivery SLA is 3 to 7 calendar days from dispatch. The displayed delivery estimate on the order is the primary customer-facing SLA reference.
+
+
+

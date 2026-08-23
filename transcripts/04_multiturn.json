@@ -5,12 +5,44 @@
     "user_text": "Why is it risky?",
     "intent": "RETURN_RISK",
     "risk": {
-      "return_probability": 0.44885600854963037,
+      "return_probability": 0.44885600854963015,
       "risk_bucket": "Low",
-      "threshold_file": "thresholds.json"
+      "threshold_file": "thresholds.json",
+      "explanation": [
+        {
+          "feature": "payment_method",
+          "description": "payment method = Prepaid_Card",
+          "impact": -0.117,
+          "direction": "reduces risk"
+        },
+        {
+          "feature": "product_category",
+          "description": "product category = Footwear",
+          "impact": 0.0225,
+          "direction": "increases risk"
+        },
+        {
+          "feature": "customer_tenure_days",
+          "description": "customer tenure = 17",
+          "impact": 0.0166,
+          "direction": "increases risk"
+        },
+        {
+          "feature": "delivery_distance_km",
+          "description": "delivery distance = 604.60",
+          "impact": -0.0155,
+          "direction": "reduces risk"
+        },
+        {
+          "feature": "delivery_days",
+          "description": "delivery time = 1",
+          "impact": -0.0117,
+          "direction": "reduces risk"
+        }
+      ]
     },
     "answer": {
-      "answer": "The estimated return probability is 44.9%, giving a Low return-risk rating.",
+      "answer": "The estimated return probability is 44.9%. Under the model's calibrated thresholds, this falls into the Low risk bucket.\nModel-derived factors associated with higher predicted return risk:\n\u2022 product category = Footwear\n\u2022 customer tenure = 17\nModel-derived factors associated with lower predicted return risk:\n\u2022 payment method = Prepaid_Card\n\u2022 delivery distance = 604.60",
       "source": "return_risk_tool",
       "confidence": 0.4489
     },

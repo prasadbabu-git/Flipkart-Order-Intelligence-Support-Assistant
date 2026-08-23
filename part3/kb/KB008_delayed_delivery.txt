@@ -1,1 +1,4 @@
-When an order passes its displayed delivery estimate, the support agent should first check the latest shipment scan and estimated date. A delayed shipment can be escalated when no movement is recorded for 48 hours.
+﻿When an order passes its displayed delivery estimate, the support agent should first check the latest shipment scan and estimated date. A delayed shipment can be escalated when no movement is recorded for 48 hours.
+
+
+

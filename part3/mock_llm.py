@@ -16,11 +16,70 @@ def few_shot_examples():
 def generate(intent, context):
     if intent=='POLICY':
         if not context.get('grounded',False):
-            return {'answer':f"I could not find a sufficiently grounded policy answer. Retrieval score {context.get('score',0):.3f} is below the threshold {context.get('threshold',0):.3f}.",'source':'policy_kb','confidence':round(float(context.get('score',0)),4)}
+            score = float(context.get('score', 0))
+            threshold = float(context.get('threshold', 0))
+            anchors = context.get('anchors', [])
+            return {
+                'answer': (
+                    f"I could not find a sufficiently grounded policy answer. "
+                    f"Retrieval score: {score:.3f}; "
+                    f"semantic threshold: {threshold:.3f}; "
+                    f"required domain anchor: {bool(anchors)}."
+                ),
+                'source': 'policy_kb',
+                'confidence': round(score, 4),
+            }
         hit=context['hits'][0]
         return {'answer':hit['text'],'source':'policy_kb','confidence':round(float(hit['score']),4)}
-    if intent=='RETURN_RISK':
-        r=context['risk']
-        return {'answer':f"The estimated return probability is {r['return_probability']:.1%}, giving a {r['risk_bucket']} return-risk rating.",'source':'return_risk_tool','confidence':round(r['return_probability'],4)}
-    c=context['classification']
-    return {'answer':f"The product is classified as {c['label']} with {c['confidence']:.1%} confidence.",'source':'image_classifier_tool','confidence':round(float(c['confidence']),4)}
+    if intent == "RETURN_RISK":
+        r = context["risk"]
+
+        explanation = r.get("explanation", [])
+
+    risk_factors = [
+        item
+        for item in explanation
+        if item["direction"] == "increases risk"
+    ]
+
+    protective_factors = [
+        item
+        for item in explanation
+        if item["direction"] == "reduces risk"
+    ]
+
+    lines = [
+    (
+        f"The estimated return probability is "
+        f"{r['return_probability']:.1%}. "
+        f"Under the model's calibrated thresholds, "
+        f"this falls into the {r['risk_bucket']} risk bucket."
+    )
+]
+
+    if risk_factors:
+        lines.append(
+    "Model-derived factors associated with higher predicted return risk:"
+)
+        for item in risk_factors[:3]:
+            lines.append(
+                f"• {item['description']}"
+            )
+
+    if protective_factors:
+        lines.append(
+    "Model-derived factors associated with lower predicted return risk:"
+)
+        for item in protective_factors[:2]:
+            lines.append(
+                f"• {item['description']}"
+            )
+
+    return {
+        "answer": "\n".join(lines),
+        "source": "return_risk_tool",
+        "confidence": round(
+            float(r["return_probability"]),
+            4
+        ),
+    }
