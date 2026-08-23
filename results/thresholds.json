@@ -1,0 +1,13 @@
+{
+  "logistic_optimal_threshold": 0.44,
+  "random_forest_optimal_threshold_t_star_rf": 0.5,
+  "logistic_recall_gain_vs_0.5": 0.1794871794871794,
+  "random_forest_recall_gain_vs_0.5": 0.0,
+  "random_forest_best_params": {
+    "model__max_depth": 6,
+    "model__n_estimators": 200
+  },
+  "random_forest_best_cv_roc_auc": 0.6191897552449909,
+  "random_forest_test_roc_auc": 0.6203081348712416,
+  "cv_test_auc_gap": 0.0011183796262507206
+}

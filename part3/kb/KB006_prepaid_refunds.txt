@@ -1,0 +1,1 @@
+For prepaid orders, an approved refund is sent back to the original payment method after inspection. The reference policy timeline for this assignment is up to 3 business days after approval.

@@ -1,0 +1,65 @@
+[
+  {
+    "query": "What is the footwear return period?",
+    "relevant_documents": [
+      "KB002"
+    ],
+    "retrieved_documents": [
+      "KB002",
+      "KB001"
+    ],
+    "precision_at_3": 0.3333333333333333,
+    "recall_at_3": 1.0
+  },
+  {
+    "query": "How long can COD refunds take?",
+    "relevant_documents": [
+      "KB005"
+    ],
+    "retrieved_documents": [
+      "KB005",
+      "KB004"
+    ],
+    "precision_at_3": 0.3333333333333333,
+    "recall_at_3": 1.0
+  },
+  {
+    "query": "What is the electronics return window?",
+    "relevant_documents": [
+      "KB003"
+    ],
+    "retrieved_documents": [
+      "KB003",
+      "KB005",
+      "KB009"
+    ],
+    "precision_at_3": 0.3333333333333333,
+    "recall_at_3": 1.0
+  },
+  {
+    "query": "How long is standard delivery?",
+    "relevant_documents": [
+      "KB007"
+    ],
+    "retrieved_documents": [
+      "KB007",
+      "KB004",
+      "KB008"
+    ],
+    "precision_at_3": 0.3333333333333333,
+    "recall_at_3": 1.0
+  },
+  {
+    "query": "When is reverse pickup available?",
+    "relevant_documents": [
+      "KB009"
+    ],
+    "retrieved_documents": [
+      "KB009",
+      "KB011",
+      "KB010"
+    ],
+    "precision_at_3": 0.3333333333333333,
+    "recall_at_3": 1.0
+  }
+]

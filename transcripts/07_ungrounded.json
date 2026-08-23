@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "query": "What is the return policy for spaceships?",
+  "result": {
+    "user_text": "What is the return policy for spaceships?",
+    "intent": "POLICY",
+    "grounded": true,
+    "score": 0.4406293034553528,
+    "threshold": 0.15,
+    "hits": [
+      {
+        "chunk_id": "KB014_01",
+        "doc_id": "KB014",
+        "text": "Items identified by the category policy as non-returnable are not eligible for a standard return.",
+        "score": 0.4406293034553528
+      },
+      {
+        "chunk_id": "KB005_02",
+        "doc_id": "KB005",
+        "text": "The refund is initiated after the returned item is accepted.",
+        "score": 0.43520644307136536
+      },
+      {
+        "chunk_id": "KB004_01",
+        "doc_id": "KB004",
+        "text": "Eligible home products may be returned within 10 calendar days of delivery when the item is unused and safely packaged.",
+        "score": 0.42439430952072144
+      }
+    ],
+    "answer": {
+      "answer": "Items identified by the category policy as non-returnable are not eligible for a standard return.",
+      "source": "policy_kb",
+      "confidence": 0.4406
+    },
+    "conversation": {}
+  }
+}

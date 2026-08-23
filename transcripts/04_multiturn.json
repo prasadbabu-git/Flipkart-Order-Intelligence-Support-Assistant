@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "query": "Why is it risky?",
+  "result": {
+    "user_text": "Why is it risky?",
+    "intent": "RETURN_RISK",
+    "risk": {
+      "return_probability": 0.44885600854963015,
+      "risk_bucket": "Low",
+      "threshold_file": "thresholds.json"
+    },
+    "answer": {
+      "answer": "The estimated return probability is 44.9%, giving a Low return-risk rating.",
+      "source": "return_risk_tool",
+      "confidence": 0.4489
+    },
+    "conversation": {
+      "order_features": {
+        "product_category": "Footwear",
+        "price_inr": 2572.0,
+        "discount_pct": 23.8,
+        "payment_method": "Prepaid_Card",
+        "customer_tenure_days": 17,
+        "num_previous_orders": 3,
+        "num_previous_returns": 0,
+        "delivery_distance_km": 604.6,
+        "delivery_days": 1,
+        "is_weekend_order": 0,
+        "rating_given": 2.0
+      },
+      "order_id": 1
+    }
+  }
+}

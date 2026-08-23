@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.vscode/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+*.log
+.env
+
+# Generated ML caches / downloaded datasets
+data/feature_cache/
+data/FashionMNIST/
+
+# Runtime artifacts
+runtime/
+logs/
+
+# Optional local vector index
+part3/vector_store/index.faiss
+part3/vector_store/index.pkl

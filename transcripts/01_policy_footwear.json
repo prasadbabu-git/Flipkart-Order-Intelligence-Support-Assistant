@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "query": "What is the return period for footwear?",
+  "result": {
+    "user_text": "What is the return period for footwear?",
+    "intent": "POLICY",
+    "grounded": true,
+    "score": 0.8417903780937195,
+    "threshold": 0.15,
+    "hits": [
+      {
+        "chunk_id": "KB002_01",
+        "doc_id": "KB002",
+        "text": "The footwear return period is 14 calendar days from delivery when the shoes are unused and include the original packaging.",
+        "score": 0.8417903780937195
+      },
+      {
+        "chunk_id": "KB002_02",
+        "doc_id": "KB002",
+        "text": "Sole wear or outdoor use may make a footwear return ineligible.",
+        "score": 0.6244702935218811
+      },
+      {
+        "chunk_id": "KB001_01",
+        "doc_id": "KB001",
+        "text": "Apparel items may be returned within 14 calendar days of delivery when they are unused and include the original tags.",
+        "score": 0.5498461127281189
+      }
+    ],
+    "answer": {
+      "answer": "The footwear return period is 14 calendar days from delivery when the shoes are unused and include the original packaging.",
+      "source": "policy_kb",
+      "confidence": 0.8418
+    },
+    "conversation": {}
+  }
+}

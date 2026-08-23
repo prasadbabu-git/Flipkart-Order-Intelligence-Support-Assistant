@@ -1,0 +1,4 @@
+{
+  "backend": "sentence-transformers+faiss",
+  "chunks": 28
+}

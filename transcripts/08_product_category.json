@@ -1,0 +1,4 @@
+{
+  "status": "PENDING",
+  "reason": "Part 2 model artifact is not generated in this no-network preparation environment. Run part2/train_classifier.py in an environment with Fashion-MNIST and pretrained ResNet weights available."
+}

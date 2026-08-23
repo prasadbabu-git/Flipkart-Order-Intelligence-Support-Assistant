@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "query": "How long can COD refunds take?",
+  "result": {
+    "user_text": "How long can COD refunds take?",
+    "intent": "POLICY",
+    "grounded": false,
+    "score": 0.8499888181686401,
+    "threshold": 0.15,
+    "hits": [
+      {
+        "chunk_id": "KB005_01",
+        "doc_id": "KB005",
+        "text": "The COD refund timeline is up to 5 business days after the approved return passes inspection.",
+        "score": 0.8499888181686401
+      },
+      {
+        "chunk_id": "KB005_02",
+        "doc_id": "KB005",
+        "text": "The refund is initiated after the returned item is accepted.",
+        "score": 0.5160471200942993
+      },
+      {
+        "chunk_id": "KB004_01",
+        "doc_id": "KB004",
+        "text": "Eligible home products may be returned within 10 calendar days of delivery when the item is unused and safely packaged.",
+        "score": 0.4389294981956482
+      }
+    ],
+    "answer": {
+      "answer": "I could not find a sufficiently grounded policy answer. Retrieval score 0.850 is below the threshold 0.150.",
+      "source": "policy_kb",
+      "confidence": 0.85
+    },
+    "conversation": {}
+  }
+}
